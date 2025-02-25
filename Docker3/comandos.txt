@@ -1,0 +1,18 @@
+# Iniciar los servicios
+ docker-compose up -d
+
+ # Verificar los servicios en ejecución
+ docker-compose ps
+
+ # Obtener la URL de Jupyter Notebook
+ docker-compose logs jupyter
+
+ # Construir y ejecutar los servicios
+ docker-compose up --build
+
+ # Verificar que el modelo se ha guardado
+ docker-compose exec tensorflow-serving ls /models/my_model/1
+
+ # Hacer una predicción usando el modelo servido
+ curl -X POST "http://localhost:8501/v1/models/my_model:predict" \
+      -d '{"instances": [[2.0], [3.0], [4.0]]}'

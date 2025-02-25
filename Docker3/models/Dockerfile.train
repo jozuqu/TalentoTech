@@ -1,0 +1,8 @@
+FROM python:3.8-slim-buster
+
+RUN pip install tensorflow numpy
+
+WORKDIR /app
+COPY train_model.py .
+
+CMD ["python", "train_model.py"]

@@ -1,0 +1,9 @@
+# Construir la imagen actualizada
+ docker build -t tensorflow-train:latest .
+
+ # Ejecutar el contenedor
+ docker run --rm -v $(pwd):/app tensorflow-train:latest
+
+
+ #ejecutar con bash
+ sudo docker run -it -v $PWD:/home/app/ tensorflow-train:latest /bin/bash

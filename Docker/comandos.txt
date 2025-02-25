@@ -1,0 +1,6 @@
+# Construir la imagen
+# -t es la tag que se desea usar (nombre facil)
+ docker build -t tensorflow-python:latest .
+
+ # Ejecutar el contenedor
+ docker run --rm tensorflow-python:latest

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  jupyter:
+    image: tfjupyter/tf
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/app/tf
+    networks:
+      - ai-network
+  train:
+    build:
+      context: .
+      dockerfile: dockerfile.train
+    volumes:
+    - .models:/models
+  tensorflow-serving:
+    image: tensorflow/serving
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/models
+    environment:
+      - MODEL_NAME=my-model
+    networks:
+      - ai-network
+networks:
+  ai-network:
+    driver: bridge
+
+volumes:
+  notebooks:
+  models:
